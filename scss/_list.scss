@@ -8,7 +8,6 @@ $card-bradius: 5px;
     border-radius: 3px;;
     // width:100%;
     flex-direction: column;
-    border: 2px dashed orange;
     background-color: col.$gray;
     padding:2vw;
     gap:20px;
@@ -23,6 +22,7 @@ $card-bradius: 5px;
         display: flex;
         flex-wrap: nowrap;
         align-items: center;
+        cursor: pointer;
         
         input{
             margin-right: 1em;

@@ -11,6 +11,8 @@ $super-light-gray: #f8f8f8;
 $fff:       #fff;
 
 
+$list-bradius:5px;
+
 body{
     background-color: col.$background;
     font-size: 16px;
@@ -18,7 +20,7 @@ body{
 
 
 .outer{
-    margin: 5px;
+    margin: 20px;
     border: 2px solid col.$border;
 }
 .navbar{
@@ -46,8 +48,45 @@ body{
         max-width: 25%;
         width: 100%;
 
-        background-color: col.$super-light-gray;
+        background-color: #002;
         border-right: 2px solid col.$light-gray;
+        
+        padding-left: 5em;
+        padding-top: 2em;
+        padding-bottom: 2em;
+
+        .list-o-lists{
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            gap: 10px;
+            text-align: right;
+
+
+            div{
+                background-color: col.$navlist-back;
+                border-radius: $list-bradius 0 0 $list-bradius;
+                padding-right: 5px;
+                transition: background-color 0.2s, margin-left 0.5s;
+                cursor: pointer;
+
+                p{
+                    margin: 0px;
+                    padding: 16px;
+                }
+            }
+
+            div:hover{
+                background-color: col.$navlist-fore;
+            }
+
+            input:checked + label>div{
+                background-color: col.$navlist-fore;
+                margin-left: -2em;
+            }
+        }
+
+
     }
     .right{
         flex-basis: 75%;
