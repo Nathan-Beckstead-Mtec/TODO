@@ -1,0 +1,59 @@
+@use "_list.scss" as list;
+@use "_colors.scss" as col;
+
+$gray:      #808a96;
+$black:     #383c41;
+$border:    #59595b;
+$icons:     #999999;
+$light-gray:#ebebeb;
+$background:#353535;
+$super-light-gray: #f8f8f8;
+$fff:       #fff;
+
+
+body{
+    background-color: col.$background;
+    font-size: 16px;
+}
+
+
+.outer{
+    margin: 5px;
+    border: 2px solid col.$border;
+}
+.navbar{
+    background-color: col.$black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color:col.$fff;
+
+    padding-left: 2vw;
+    padding-right: 2vw;
+
+    .icons{
+        color:col.$icons;
+    }
+}
+
+.container{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+
+    .left{
+        flex-basis: 25%;
+        max-width: 25%;
+        width: 100%;
+
+        background-color: col.$super-light-gray;
+        border-right: 2px solid col.$light-gray;
+    }
+    .right{
+        flex-basis: 75%;
+        max-width: 75%;
+        width: 100%;
+
+        background-color: col.$fff;
+    }
+}

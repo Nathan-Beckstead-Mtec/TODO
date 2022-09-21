@@ -1,0 +1,96 @@
+@use "_colors.scss" as col;
+
+$card-bradius: 5px;
+
+.list{
+    display: flex;
+    max-height: 100%;
+    border-radius: 3px;;
+    // width:100%;
+    flex-direction: column;
+    border: 2px dashed orange;
+    background-color: col.$gray;
+    padding:2vw;
+    gap:20px;
+
+
+
+    .card{
+        border-radius: $card-bradius;
+        width: 100%;
+        background-color: col.$light-gray;
+        // overflow: clip;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        
+        input{
+            margin-right: 1em;
+            margin-left: 1em;
+            height:1.5em;
+            width: 1.5em;
+            transition: color 2s, text-shadow 2s, text-decoration-color 2s;
+        }
+        input:checked~p{
+            color: col.$gray;
+            text-shadow: 0 0 1px #000;
+            text-decoration: line-through;
+            text-decoration-color: #000;
+        }
+    }
+
+
+    .edit{
+        border-radius: $card-bradius;
+        width: 100%;
+        background-color: col.$light-gray;
+
+        textarea{
+            width: 100%;
+            height: 100%;
+            margin:0;
+            padding:5px;
+            box-sizing: border-box;
+
+            border-radius: $card-bradius;
+            overflow: hidden;
+
+            overflow-wrap: break-word;
+            resize:none;
+            font-size: 1em;
+            // vertical-align: middle;
+            
+            background-color: col.$textbox-dark;
+            border: none;
+
+            transition: background-color .3s, box-shadow .3s.1s;
+        }
+        textarea:hover{
+            background-color: col.$fff;
+
+        }
+        textarea:focus{
+            background-color: col.$fff;
+            box-shadow: 0 5px 10px 2px #000;
+            overflow: scroll;
+        }
+    }
+    .footer{
+        display:flex;
+        justify-content: space-between;
+
+        .newcard{
+            flex: 1 0 auto;
+
+        }
+    }
+}
+
+.icon{
+    width: 20px;
+    height:20px;
+
+}
+.icon-plus::before{
+    content: "+";
+}
