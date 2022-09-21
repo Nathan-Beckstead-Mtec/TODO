@@ -45,7 +45,7 @@ $card-bradius: 5px;
         width: 100%;
         background-color: col.$light-gray;
 
-        textarea{
+        input{
             width: 100%;
             height: 100%;
             margin:0;
@@ -65,11 +65,11 @@ $card-bradius: 5px;
 
             transition: background-color .3s, box-shadow .3s.1s;
         }
-        textarea:hover{
+        input:hover{
             background-color: col.$fff;
 
         }
-        textarea:focus{
+        input:focus{
             background-color: col.$fff;
             box-shadow: 0 5px 10px 2px #000;
             overflow: scroll;

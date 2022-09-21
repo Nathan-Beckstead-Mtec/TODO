@@ -89,5 +89,5 @@ console.log(textarea.addEventListener("keypress", update));
 
 
 
-render_lists();
-render_items();
+// render_lists();
+// render_items();

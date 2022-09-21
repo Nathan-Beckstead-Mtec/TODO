@@ -34,7 +34,7 @@
   width: 100%;
   background-color: #ebebeb;
 }
-.list .edit textarea {
+.list .edit input {
   width: 100%;
   height: 100%;
   margin: 0;
@@ -49,10 +49,10 @@
   border: none;
   transition: background-color 0.3s, box-shadow 0.3s 0.1s;
 }
-.list .edit textarea:hover {
+.list .edit input:hover {
   background-color: #fff;
 }
-.list .edit textarea:focus {
+.list .edit input:focus {
   background-color: #fff;
   box-shadow: 0 5px 10px 2px #000;
   overflow: scroll;
