@@ -15,18 +15,30 @@ var index_list_selected = 0;
 
 
 
+function generate_item_Html(item, index){
+	//should not be used directly because of the link between item and idex
+	return `<label class="card" for="li_${index}"><input type="checkbox" id="li_${index}" ${item.checked ? 'checked="checked"' : ''}><p>${item.text}</p></label>`;
+}
+function generate_item_Html_from_index(index){
+	return generate_item_Html(lists[index_list_selected].items[index],index);
+}
+function generate_item_Html_last(){
+	return generate_item_Html_from_index(lists[index_list_selected].items.length -1);
+}
 
 
 function render_items(){
 
     let listHtml = "";
     lists[index_list_selected].items.forEach((item,index) => {
-        listHtml += `<label class="card" for="li_${index}"><input type="checkbox" id="li_${index}" ${item.checked ? 'checked="checked"' : ''}><p>${item.text}</p></label>`
+        listHtml += generate_item_Html(item, index);
     })
-	listHtml += `<div class="edit"><textarea maxlength="512" data-autosize="true" placeholder="+ add new item" id="add_item"></textarea></div>`
+	listHtml += `<div class="edit"><input placeholder="+ add new item" id="add_item"></input></div>`
 
+
+	unload_event_listener();
 	document.querySelector("#list").innerHTML = listHtml;
-
+	load_event_listener();
 
 
 }
@@ -78,16 +90,31 @@ function update(event){
     console.log(event);
     if (event.key === "Enter"){
         event.preventDefault();
-        // add();
+		let input = document.querySelector("#add_item");
+		const item_to_push = {text: input.value, checked:false};
+		let index = lists[index_list_selected].items.length; //off by one accounted for below
+		lists[index_list_selected].items.push({text: "world", checked:false});
+		
+		input.value = "";
+
+		let doc = new Document();
+		let temp = doc.createElement("template");
+		temp.innerHTML = generate_item_Html(item_to_push,index);
+		input.parentElement.before(temp.children);
+		// add();
     }
 }
+function unload_event_listener(){
+	document.querySelector("#add_item").removeEventListener("keypress", update);
+}
+function load_event_listener(){
+	document.querySelector("#add_item").addEventListener("keypress", update);
+}
 
-var textarea = document.querySelector("#add_item");
-console.log(textarea);
-console.log(textarea.addEventListener("keypress", update));
-// a.addEventListener("input", add);
 
 
 
-// render_lists();
-// render_items();
+
+
+render_lists();
+render_items();
