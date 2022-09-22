@@ -1,3 +1,7 @@
+const all_checkboxes_query_selector = "label.card>input[type=checkbox]";
+//used in check_checker()
+
+
 var lists = [
 	{name: "list a",items: [
 		{text:"clean bathroom", checked: true},
@@ -17,7 +21,7 @@ var index_list_selected = 0;
 
 function generate_item_Html(item, index){
 	//should not be used directly because of the link between item and idex
-	return `<label class="card" for="li_${index}"><input type="checkbox" id="li_${index}" ${item.checked ? 'checked="checked"' : ''}><p>${item.text}</p></label>`;
+	return `<label class="card" for="li_${index}"><input type="checkbox" id="li_${index}" ${item.checked ? 'checked="checked"' : ''} oninput="check_checker()"><p>${item.text}</p></label>`;
 }
 // unused but works
 function generate_item_Html_from_index(index){
@@ -88,30 +92,47 @@ function sanitize(input){
 
 
 
-function update(event){
-    console.log(event);
+function textbox_update(event){
     if (event.key === "Enter"){
         event.preventDefault(); //dont let the enter key scroll the page
 		let input = document.querySelector("#add_item"); //text input
-		const item_to_push = {text: input.value, checked:false};
+		
+		
+		let item_to_push = {text: input.value, checked:false};
 		let index = lists[index_list_selected].items.length; //off by one accounted for below
-		lists[index_list_selected].items.push({text: "world", checked:false}); //add the thing
+		lists[index_list_selected].items.push(item_to_push); //add the thing
 		
 		input.value = ""; //clears the textbox again
 
-		
-		items_Html_container = document.querySelector("#list");
-		items_Html_container.innerHTML += generate_item_Html(item_to_push,index);
-		
+
+		render_items();
 
     }
 }
 function unload_event_listener(){
-	document.querySelector("#add_item").removeEventListener("keypress", update);
+	document.querySelector("#add_item").removeEventListener("keypress", textbox_update);
 }
 function load_event_listener(){
-	document.querySelector("#add_item").addEventListener("keypress", update);
+	document.querySelector("#add_item").addEventListener("keypress", textbox_update);
 }
+
+
+function check_checker(){
+	let num_changed = 0;
+	all_checkboxes = document.querySelectorAll(all_checkboxes_query_selector); //variable is a const declared on line 1
+	all_checkboxes.forEach(elem => {
+		let bool = elem.checked;
+		let id = parseInt(elem.id.slice(3));
+		if (isNaN(id)){
+			console.error("check_checker(): Error Parsing:" + elem.id);
+			return;
+		}
+		console.log(bool + id);
+		lists[index_list_selected].items[id].checked = bool;
+
+	});
+}
+
 
 
 

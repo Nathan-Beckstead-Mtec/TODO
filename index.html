@@ -50,14 +50,14 @@
             <div class="right">
                 <div class="list" id="list">
                     <label class="card" for="0">
-                        <input type="checkbox" id="0">
+                        <input type="checkbox" id="0" oninput="check_checker()">
                         <p>hardcoded todo item to set scss</p>
                     </label>
 					
                 </div>
 				<div class="edit">
-					<input placeholder="+ add new item" id="add_item"></input>
-					<button onclick="render_lists()">render lists</button>
+					<input placeholder="+ add new item" id="add_item" autofocus></input>
+					<!-- <button onclick="render_lists()">render lists</button> -->
 					<button onclick="render_items()">render items</button>
 				</div>
               <!-- current todo list name goes here -->
