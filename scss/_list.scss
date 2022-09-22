@@ -5,7 +5,7 @@ $card-bradius: 5px;
 .list{
     display: flex;
     max-height: 100%;
-    border-radius: 3px;;
+    border-radius: $card-bradius $card-bradius 0 0;
     // width:100%;
     flex-direction: column;
     background-color: col.$gray;
@@ -38,51 +38,46 @@ $card-bradius: 5px;
             text-decoration-color: #000;
         }
     }
+}
 
 
-    .edit{
-        border-radius: $card-bradius;
+
+
+.edit{
+    border-radius: 0 0 $card-bradius $card-bradius;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: col.$gray;
+    padding:2vw;
+    padding-top: 0px;
+    input{
         width: 100%;
-        background-color: col.$light-gray;
+        height: 100%;
+        margin:0;
+        padding:5px;
+        box-sizing: border-box;
 
-        input{
-            width: 100%;
-            height: 100%;
-            margin:0;
-            padding:5px;
-            box-sizing: border-box;
+        border-radius: $card-bradius;
+        overflow: hidden;
 
-            border-radius: $card-bradius;
-            overflow: hidden;
+        overflow-wrap: break-word;
+        resize:none;
+        font-size: 1em;
+        // vertical-align: middle;
+        
+        background-color: col.$textbox-dark;
+        border: none;
 
-            overflow-wrap: break-word;
-            resize:none;
-            font-size: 1em;
-            // vertical-align: middle;
-            
-            background-color: col.$textbox-dark;
-            border: none;
-
-            transition: background-color .3s, box-shadow .3s.1s;
-        }
-        input:hover{
-            background-color: col.$fff;
-
-        }
-        input:focus{
-            background-color: col.$fff;
-            box-shadow: 0 5px 10px 2px #000;
-            overflow: scroll;
-        }
+        transition: background-color .3s, box-shadow .3s.1s;
     }
-    .footer{
-        display:flex;
-        justify-content: space-between;
+    input:hover{
+        background-color: col.$fff;
 
-        .newcard{
-            flex: 1 0 auto;
-
-        }
+    }
+    input:focus{
+        background-color: col.$fff;
+        box-shadow: 0 5px 10px 2px #000;
+        overflow: scroll;
     }
 }
 

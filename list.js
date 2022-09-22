@@ -19,9 +19,11 @@ function generate_item_Html(item, index){
 	//should not be used directly because of the link between item and idex
 	return `<label class="card" for="li_${index}"><input type="checkbox" id="li_${index}" ${item.checked ? 'checked="checked"' : ''}><p>${item.text}</p></label>`;
 }
+// unused but works
 function generate_item_Html_from_index(index){
 	return generate_item_Html(lists[index_list_selected].items[index],index);
 }
+// unused but works
 function generate_item_Html_last(){
 	return generate_item_Html_from_index(lists[index_list_selected].items.length -1);
 }
@@ -33,7 +35,7 @@ function render_items(){
     lists[index_list_selected].items.forEach((item,index) => {
         listHtml += generate_item_Html(item, index);
     })
-	listHtml += `<div class="edit"><input placeholder="+ add new item" id="add_item"></input></div>`
+	// listHtml += `<div class="edit"><input placeholder="+ add new item" id="add_item"></input></div>`
 
 
 	unload_event_listener();
@@ -89,19 +91,19 @@ function sanitize(input){
 function update(event){
     console.log(event);
     if (event.key === "Enter"){
-        event.preventDefault();
-		let input = document.querySelector("#add_item");
+        event.preventDefault(); //dont let the enter key scroll the page
+		let input = document.querySelector("#add_item"); //text input
 		const item_to_push = {text: input.value, checked:false};
 		let index = lists[index_list_selected].items.length; //off by one accounted for below
-		lists[index_list_selected].items.push({text: "world", checked:false});
+		lists[index_list_selected].items.push({text: "world", checked:false}); //add the thing
 		
-		input.value = "";
+		input.value = ""; //clears the textbox again
 
-		let doc = new Document();
-		let temp = doc.createElement("template");
-		temp.innerHTML = generate_item_Html(item_to_push,index);
-		input.parentElement.before(temp.children);
-		// add();
+		
+		items_Html_container = document.querySelector("#list");
+		items_Html_container.innerHTML += generate_item_Html(item_to_push,index);
+		
+
     }
 }
 function unload_event_listener(){
