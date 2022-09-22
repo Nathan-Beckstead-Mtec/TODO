@@ -21,7 +21,7 @@ var index_list_selected = 0;
 
 function generate_item_Html(item, index){
 	//should not be used directly because of the link between item and idex
-	return `<label class="card" for="li_${index}"><input type="checkbox" id="li_${index}" ${item.checked ? 'checked="checked"' : ''} oninput="check_checker()"><p>${item.text}</p></label>`;
+	return `<label class="card" for="li_${index}"><input type="checkbox" id="li_${index}" ${item.checked ? 'checked="checked"' : ''} oninput="check_checker(${index})"><p>${item.text}</p></label>`;
 }
 // unused but works
 function generate_item_Html_from_index(index){
@@ -46,7 +46,6 @@ function render_items(){
 	document.querySelector("#list").innerHTML = listHtml;
 	load_event_listener();
 
-
 }
 
 function render_lists(){
@@ -67,6 +66,7 @@ function render_lists(){
 	</a>`;
 
 	document.querySelector("#list-o-lists").innerHTML = list_o_listsHtml;
+	render_items();
 }
 
 
@@ -117,20 +117,25 @@ function load_event_listener(){
 }
 
 
-function check_checker(){
+function check_checker(id){
 	let num_changed = 0;
+	let num_elem = 0;
+	console.clear();
 	all_checkboxes = document.querySelectorAll(all_checkboxes_query_selector); //variable is a const declared on line 1
 	all_checkboxes.forEach(elem => {
+		num_elem++;
 		let bool = elem.checked;
-		let id = parseInt(elem.id.slice(3));
-		if (isNaN(id)){
-			console.error("check_checker(): Error Parsing:" + elem.id);
-			return;
-		}
-		console.log(bool + id);
+		old = lists[index_list_selected].items[id].checked;
 		lists[index_list_selected].items[id].checked = bool;
+		if (bool != old){
+			console.log("changed " + id + " from " + old + " to " + bool);
+			num_changed++;
+		}else{
+			console.log("did not change " + id);
+		}
 
 	});
+	console.log("changed: " + num_changed + " of " + num_elem);
 }
 
 
@@ -139,5 +144,5 @@ function check_checker(){
 
 
 
+
 render_lists();
-render_items();
