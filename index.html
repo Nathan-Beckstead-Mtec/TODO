@@ -3,6 +3,7 @@
     <title>TODO app</title>
     <link rel="stylesheet" href="./css/style.css">
 
+    <!-- <script defer src="sha256.js"></script> -->
     <script defer src="list.js"></script>
 
 </head>
@@ -29,14 +30,16 @@
         <div class="container">
             <div class="left">
 				<div class="list-o-lists" id="list-o-lists">
-					<input id="a0" onclick="changed_selected_list();" type="radio" name="selected-list" style="display:none;">
+					
+					<!-- <input id="a0" onclick="changed_selected_list();" type="radio" name="selected-list" style="display:none;">
 					<label for="a0">
 						<div><p class="list-name">list 1</p></div>
 					</label>
 					<input id="a1" onclick="changed_selected_list();" type="radio" name="selected-list" style="display:none;">
 					<label for="a1">
 						<div><p class="list-name">list 1</p></div>
-					</label>
+					</label> -->
+					
 					<a onclick="new_list();">
 						<div>
 							<p>&lt;new list&gt;</p>
@@ -49,21 +52,21 @@
        
             <div class="right">
                 <div class="list" id="list">
-                    <label class="card" for="0">
+                    <!-- <label class="card" for="0">
                         <input type="checkbox" id="0" oninput="check_checker()">
                         <p>hardcoded todo item to set scss</p>
-                    </label>
+                    </label> -->
+					<div class="empty">
+						<p>&lt;----- create a new list to start</p>
+					</div>
 					
                 </div>
-				<div class="edit">
-					<input placeholder="+ add new item" id="add_item" autofocus></input>
+				<div class="edit" >
+					<input placeholder="+ add new item" id="add_item" disabled="true"></input>
 					<!-- <button onclick="render_lists()">render lists</button> -->
-					<button onclick="render_items()">render items</button>
 				</div>
-              <!-- current todo list name goes here -->
-              <!-- current todo list goes here -->
             </div>
-        </div>
+        </div>item
        </div>
 </body>
 </html>

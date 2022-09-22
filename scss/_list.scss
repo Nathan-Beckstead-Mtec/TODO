@@ -9,11 +9,11 @@ $card-bradius: 5px;
     // width:100%;
     flex-direction: column;
     background-color: col.$gray;
-    padding:2vw;
     gap:20px;
-
-
-
+    padding:2vw;
+    box-sizing: border-box;
+    
+    
     .card{
         border-radius: $card-bradius;
         width: 100%;
@@ -31,7 +31,7 @@ $card-bradius: 5px;
             width: 1.5em;
             transition: color 2s, text-shadow 2s, text-decoration-color 2s;
         }
-        input:checked~p{
+        input:checked+p{
             color: col.$gray;
             text-shadow: 0 0 1px #000;
             text-decoration: line-through;
@@ -39,6 +39,23 @@ $card-bradius: 5px;
         }
     }
 }
+
+
+
+.empty{
+    border-radius: $card-bradius;
+    width: 100%;
+    background-color: col.$card-disabled;
+    // overflow: clip;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    cursor: not-allowed;
+    box-shadow: 0 0 20px 0 col.$error_boxshadow;
+    border: 1px solid col.$border;
+    padding-left: 1em;
+}
+
 
 
 
@@ -78,6 +95,10 @@ $card-bradius: 5px;
         background-color: col.$fff;
         box-shadow: 0 5px 10px 2px #000;
         overflow: scroll;
+    }
+    input:disabled{
+        background-color: col.$textbox-disabled;
+        cursor: not-allowed;
     }
 }
 

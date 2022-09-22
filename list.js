@@ -1,27 +1,23 @@
 const all_checkboxes_query_selector = "label.card>input[type=checkbox]";
 //used in check_checker()
 
+var lists;
+var index_list_selected;
+load();
+render_lists();
 
-var lists = [
-	{name: "list a",items: [
-		{text:"clean bathroom", checked: true},
-		{text: "clean car",checked: false}
-	]},
-	{name: "list 2",items: [
-		{text: "hello", checked:false},
-		{text: "world", checked:false},
-		{text: "!!!!!", checked:true}
-	]},
-	{name: "empty list",items: []}
-];
 
-var index_list_selected = 0;
+
+
+
+
+
 
 
 
 function generate_item_Html(item, index){
 	//should not be used directly because of the link between item and idex
-	return `<label class="card" for="li_${index}"><input type="checkbox" id="li_${index}" ${item.checked ? 'checked="checked"' : ''} oninput="check_checker(${index})"><p>${item.text}</p></label>`;
+	return `<label class="card" for="li_${index}"><input type="checkbox" id="li_${index}" ${item.checked ? 'checked="checked"' : ''} oninput="check_checker()"><p>${item.text}</p></label>`;
 }
 // unused but works
 function generate_item_Html_from_index(index){
@@ -36,9 +32,15 @@ function generate_item_Html_last(){
 function render_items(){
 
     let listHtml = "";
-    lists[index_list_selected].items.forEach((item,index) => {
-        listHtml += generate_item_Html(item, index);
-    })
+    if(lists.length === 0){
+		listHtml = `<div class="empty"><p>&lt;----- create a new list to start</p></div>`;
+		document.querySelector("#add_item").disabled = true;
+	} else{
+		lists[index_list_selected].items.forEach((item,index) => {
+			listHtml += generate_item_Html(item, index);
+    	})
+		document.querySelector("#add_item").disabled = false;
+	}
 	// listHtml += `<div class="edit"><input placeholder="+ add new item" id="add_item"></input></div>`
 
 
@@ -73,15 +75,20 @@ function render_lists(){
 function changed_selected_list(new_index){
 	index_list_selected = new_index;
 	render_items();
+	save();
 }
 
 function new_list(){
 	let name = prompt("Name of new List:", "unnamed list");
+	if (name == null){
+		return;
+	}
 	name = sanitize(name);
 	lists.push({name: name,items: []})
 	index_list_selected = lists.length - 1;
 	render_lists();
 	render_items();
+	save();
 }
 
 function sanitize(input){
@@ -106,7 +113,7 @@ function textbox_update(event){
 
 
 		render_items();
-
+		save();
     }
 }
 function unload_event_listener(){
@@ -117,32 +124,60 @@ function load_event_listener(){
 }
 
 
-function check_checker(id){
-	let num_changed = 0;
-	let num_elem = 0;
-	console.clear();
+function check_checker(){
+	// let num_changed = 0;
+	// let num_elem = 0;
+	// console.clear();
+
 	all_checkboxes = document.querySelectorAll(all_checkboxes_query_selector); //variable is a const declared on line 1
 	all_checkboxes.forEach(elem => {
-		num_elem++;
+		// num_elem++;
 		let bool = elem.checked;
-		old = lists[index_list_selected].items[id].checked;
-		lists[index_list_selected].items[id].checked = bool;
-		if (bool != old){
-			console.log("changed " + id + " from " + old + " to " + bool);
-			num_changed++;
-		}else{
-			console.log("did not change " + id);
+		let id = parseInt(elem.id.slice(3));
+
+		if(isNaN(id)){
+			console.error("check_checker(): Couldn't parse id from " + elem.id);
+			return;
 		}
 
+
+		// old = lists[index_list_selected].items[id].checked;
+		lists[index_list_selected].items[id].checked = bool;
+		
+		// if (bool != old){
+		// 	console.log("changed " + id + " from " + old + " to " + bool);
+		// 	num_changed++;
+		// }else{
+		// 	console.log("did not change " + id);
+		// }
+
 	});
-	console.log("changed: " + num_changed + " of " + num_elem);
+	save();
+	// console.log("changed: " + num_changed + " of " + num_elem);
 }
 
 
+function save() {
+	localStorage.setItem('currentList', JSON.stringify(index_list_selected));
+	localStorage.setItem('lists', JSON.stringify(lists));
+	console.log("saved");
+}
+
+function load(){
+	let temp_lists = localStorage.getItem("lists");
+	let temp_index = localStorage.getItem("currentList");
+	if (temp_lists == null){
+		lists = [];
+		console.log("couldn't accsess or find saved list");
+	} else{
+		lists = JSON.parse(temp_lists);
+	}
+	if (temp_index == null){
+		index_list_selected = 0;
+		console.log("couldn't accsess or find saved list");
+	} else{
+		index_list_selected = JSON.parse(temp_index);
+	}
+}
 
 
-
-
-
-
-render_lists();

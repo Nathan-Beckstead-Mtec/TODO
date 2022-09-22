@@ -4,8 +4,9 @@
   border-radius: 5px 5px 0 0;
   flex-direction: column;
   background-color: #808a96;
-  padding: 2vw;
   gap: 20px;
+  padding: 2vw;
+  box-sizing: border-box;
 }
 .list .card {
   border-radius: 5px;
@@ -23,11 +24,24 @@
   width: 1.5em;
   transition: color 2s, text-shadow 2s, text-decoration-color 2s;
 }
-.list .card input:checked ~ p {
+.list .card input:checked + p {
   color: #808a96;
   text-shadow: 0 0 1px #000;
   text-decoration: line-through;
   text-decoration-color: #000;
+}
+
+.empty {
+  border-radius: 5px;
+  width: 100%;
+  background-color: rgba(255, 136, 136, 0.2666666667);
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  cursor: not-allowed;
+  box-shadow: 0 0 20px 0 rgba(255, 0, 0, 0.5333333333);
+  border: 1px solid #59595b;
+  padding-left: 1em;
 }
 
 .edit {
@@ -49,7 +63,7 @@
   overflow-wrap: break-word;
   resize: none;
   font-size: 1em;
-  background-color: #ddd;
+  background-color: #ccc;
   border: none;
   transition: background-color 0.3s, box-shadow 0.3s 0.1s;
 }
@@ -60,6 +74,10 @@
   background-color: #fff;
   box-shadow: 0 5px 10px 2px #000;
   overflow: scroll;
+}
+.edit input:disabled {
+  background-color: rgba(204, 204, 204, 0.4);
+  cursor: not-allowed;
 }
 
 .icon {
@@ -138,7 +156,8 @@ body {
   flex-basis: 75%;
   max-width: 75%;
   width: 100%;
-  background-color: #fff;
+  padding: 10px;
+  background-color: transparent;
 }
 
 /*# sourceMappingURL=style.css.map */
