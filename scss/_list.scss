@@ -17,7 +17,7 @@ $card-bradius: 5px;
     .card{
         border-radius: $card-bradius;
         width: 100%;
-        background-color: col.$light-gray;
+        background-color: col.$card;
         // overflow: clip;
         display: flex;
         flex-wrap: nowrap;
@@ -43,17 +43,19 @@ $card-bradius: 5px;
 
 
 .empty{
-    border-radius: $card-bradius;
+    box-sizing: border-box;
     width: 100%;
+    padding-left: 1em;
+
+    border-radius: $card-bradius;
     background-color: col.$card-disabled;
+    box-shadow: 0 0 20px 0 col.$error_boxshadow;
+    border: 1px solid col.$border;
+    cursor: not-allowed;
     // overflow: clip;
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
-    cursor: not-allowed;
-    box-shadow: 0 0 20px 0 col.$error_boxshadow;
-    border: 1px solid col.$border;
-    padding-left: 1em;
 }
 
 

@@ -1,16 +1,59 @@
-$gray:      #808a96;
-$black:     #383c41;
-$border:    #59595b;
-$icons:     #999999;
-$light-gray:#ebebeb;
-$background:#353535;
-$super-light-gray: #f8f8f8;
+$drac-black:  #282a36; 
+// #2a2c37
+$drac-gray:   #44475a;
+$drac-white:  #f8f8f2;
+$drac-navy:   #6272a4;
+$drac-red:    #ff5555;
+$drac-yellow: #f1fa8c;
+$drac-orange: #ffb86c;
+$drac-green:  #50fa7b;
+$drac-cyan:   #8be9fd;
+$drac-purple: #bd93f9;
+$drac-pink:   #ff79c6;
+$dracpro-dark-purple: #2b2640;
+$dracpro-super-black: #1d1e26;
+
+$background:$dracpro-super-black;
+$black:     $drac-black;
+$border:    $drac-red;
+$gray:      $drac-gray;
+$icons:     $drac-purple;
+$card:      $drac-navy;
+$super-light-gray: #00f;
 $fff:       #fff;
 
-$textbox-dark: #ccc;
-$navlist-back: $black;
-$navlist-fore: $gray;
+$border-lr: $drac-purple;
+$navlist-back: $dracpro-super-black;
+$navlist-notselected: $dracpro-dark-purple;
+$navlist-fore: $drac-purple;
 
-$card-disabled: #f884;
-$textbox-disabled: #ccc6;
-$error_boxshadow: #f008;
+
+
+$textbox-dark: $drac-navy;
+
+$card-disabled: #f554;
+$textbox-disabled: #0000;
+$error_boxshadow: #f558;
+
+
+
+
+
+
+// old:
+// $background:#353535;
+// $black:     #383c41;
+// $border:    #59595b;
+// $gray:      #808a96;
+// $icons:     #999999;
+// $light-gray:#ebebeb;
+// $super-light-gray: #f8f8f8;
+// $fff:       #fff;
+
+// $textbox-dark: #ccc;
+// $navlist-back: $black;
+// $navlist-fore: $gray;
+
+// $card-disabled: #f884;
+// $textbox-disabled: #ccc6;
+// $error_boxshadow: #f008;

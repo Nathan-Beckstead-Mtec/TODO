@@ -25,6 +25,7 @@ body{
 }
 .navbar{
     background-color: col.$black;
+    // border-bottom: 2px solid col.$dracpro-super-black;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -48,8 +49,8 @@ body{
         max-width: 25%;
         width: 100%;
 
-        background-color: #002;
-        border-right: 2px solid col.$light-gray;
+        background-color: col.$navlist-back;
+        border-right: 2px solid col.$border-lr;
         
         padding-left: 5em;
         padding-top: 2em;
@@ -64,7 +65,8 @@ body{
 
 
             div{
-                background-color: col.$navlist-back;
+                box-shadow: -5px 4px 4px -2px col.$drac-gray;
+                background-color: col.$navlist-notselected;
                 border-radius: $list-bradius 0 0 $list-bradius;
                 padding-right: 5px;
                 transition: background-color 0.2s, margin-left 0.5s;
