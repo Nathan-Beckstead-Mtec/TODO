@@ -57,6 +57,12 @@ body{
         padding-top: 2em;
         padding-bottom: 2em;
 
+        box-sizing: border-box;
+        overflow-y: scroll;
+        max-height: calc(100vh - 44px - 3em - 4px);
+        transition: max-height 1s;
+        transition-timing-function: cubic-bezier(.17,.84,.44,1);
+
         .list-o-lists{
             display: flex;
             flex-direction: column;
@@ -97,5 +103,11 @@ body{
         width: 100%;
         padding:10px;
         background-color: transparent;
+        
+        box-sizing: border-box;
+        overflow-y: scroll;
+        max-height: calc(100vh - 44px - 3em - 4px);
+        transition: max-height 1s;
+        transition-timing-function: cubic-bezier(.17,.84,.44,1);
     }
 }

@@ -4,7 +4,6 @@ $card-bradius: 5px;
 
 .list{
     display: flex;
-    max-height: 100%;
     border-radius: $card-bradius $card-bradius 0 0;
     // width:100%;
     flex-direction: column;
