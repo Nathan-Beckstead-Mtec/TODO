@@ -21,8 +21,16 @@ $card-bradius: 5px;
         display: flex;
         flex-wrap: nowrap;
         align-items: center;
-        cursor: pointer;
+        justify-content: flex-start;
         
+        label{
+            cursor: pointer;
+            flex-grow: 1;
+        }
+        &:hover .icons{
+            opacity: 1;
+        }
+
         input{
             margin-right: 1em;
             margin-left: 1em;
@@ -30,7 +38,7 @@ $card-bradius: 5px;
             width: 1.5em;
             transition: color 2s, text-shadow 2s, text-decoration-color 2s;
         }
-        input:checked+p{
+        input:checked+label{
             color: col.$gray;
             text-shadow: 0 0 1px #000;
             text-decoration: line-through;
@@ -38,8 +46,30 @@ $card-bradius: 5px;
         }
     }
 }
+.card.checked{
+    background-color: col.$card-checked;
+}
+.icons{
+    
+    justify-self: flex-end;
+    margin-right: 0.75em;
+    
+    display: flex;
+    flex-wrap: nowrap;
+    gap:5px;
+    transition: color, 0.1s;
+    opacity: 0.25;
+    a{
 
-
+        padding:0.3em;
+        text-decoration: none;
+        color:#444;
+    }
+    
+    .icon_trash:hover{
+        color:#f00;
+    }
+}
 
 .empty{
     box-sizing: border-box;

@@ -1,4 +1,4 @@
-const all_checkboxes_query_selector = "label.card>input[type=checkbox]";
+const all_checkboxes_query_selector = ".card>input[type=checkbox]";
 //used in check_checker()
 
 var lists;
@@ -17,7 +17,23 @@ render_lists();
 
 function generate_item_Html(item, index){
 	//should not be used directly because of the link between item and idex
-	return `<label class="card" for="li_${index}"><input type="checkbox" id="li_${index}" ${item.checked ? 'checked="checked"' : ''} oninput="check_checker()"><p>${item.text}</p></label>`;
+	const trash = `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="4" y1="7" x2="20" y2="7"></line><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path></svg>`;
+	const sublist = `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-subtask" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="6" y1="9" x2="12" y2="9"></line><line x1="4" y1="5" x2="8" y2="5"></line><path d="M6 5v11a1 1 0 0 0 1 1h5"></path><rect x="12" y="7" width="8" height="4" rx="1"></rect><rect x="12" y="15" width="8" height="4" rx="1"></rect></svg>`;
+	
+	return `
+	<div class="card${item.checked ? ' checked' : ''}" >
+	<input type="checkbox" id="li_${index}" ${item.checked ? 'checked="checked"' : ''} oninput="check_checker()">
+	<label for="li_${index}">
+		<p>${item.text}</p>
+	</label>
+	<div class="icons">
+		<a href="#" class="icon_sublist" onclick="card_button_sublist(${index})">
+			${sublist}
+		</a>
+		<a href="#" class="icon_trash" onclick="card_button_trash(${index})">
+			${trash}
+		</a></div></div>`
+	// return `<label class="card" for="li_${index}"><input type="checkbox" id="li_${index}" ${item.checked ? 'checked="checked"' : ''} oninput="check_checker()"><p>${item.text}</p></label>`;
 }
 // unused but works
 function generate_item_Html_from_index(index){
@@ -30,7 +46,14 @@ function generate_item_Html_last(){
 
 
 function render_items(){
-
+	const trashIconSvg = `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+	<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+	<line x1="4" y1="7" x2="20" y2="7"></line>
+	<line x1="10" y1="11" x2="10" y2="17"></line>
+	<line x1="14" y1="11" x2="14" y2="17"></line>
+	<path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
+	<path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
+ </svg>`;
     let listHtml = "";
     if(lists.length === 0){
 		listHtml = `<div class="empty"><p>&lt;----- create a new list to start</p></div>`;
@@ -128,6 +151,7 @@ function check_checker(){
 	// let num_changed = 0;
 	// let num_elem = 0;
 	// console.clear();
+	console.log("check checker");
 
 	all_checkboxes = document.querySelectorAll(all_checkboxes_query_selector); //variable is a const declared on line 1
 	all_checkboxes.forEach(elem => {
@@ -140,7 +164,7 @@ function check_checker(){
 			return;
 		}
 
-
+		elem.parentElement.classList.toggle("checked",bool);
 		// old = lists[index_list_selected].items[id].checked;
 		lists[index_list_selected].items[id].checked = bool;
 		
@@ -181,3 +205,21 @@ function load(){
 }
 
 
+function card_button_sublist(id){
+
+}
+function card_button_trash(id){
+	moveToTrash({
+		from:lists[index_list_selected].name,
+		item:lists[index_list_selected].items[id]});
+
+	lists[index_list_selected].items.splice(id,1);
+	save();
+	render_items();
+}
+
+
+function moveToTrash(input){
+	console.log("deleated:");
+	console.log(input)
+}

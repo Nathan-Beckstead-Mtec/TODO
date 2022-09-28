@@ -10,11 +10,18 @@
 .list .card {
   border-radius: 5px;
   width: 100%;
-  background-color: #6272a4;
+  background-color: #8be9fd;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
+  justify-content: flex-start;
+}
+.list .card label {
   cursor: pointer;
+  flex-grow: 1;
+}
+.list .card:hover .icons {
+  opacity: 1;
 }
 .list .card input {
   margin-right: 1em;
@@ -23,11 +30,33 @@
   width: 1.5em;
   transition: color 2s, text-shadow 2s, text-decoration-color 2s;
 }
-.list .card input:checked + p {
+.list .card input:checked + label {
   color: #44475a;
   text-shadow: 0 0 1px #000;
   text-decoration: line-through;
   text-decoration-color: #000;
+}
+
+.card.checked {
+  background-color: #6272a4;
+}
+
+.icons {
+  justify-self: flex-end;
+  margin-right: 0.75em;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 5px;
+  transition: color, 0.1s;
+  opacity: 0.25;
+}
+.icons a {
+  padding: 0.3em;
+  text-decoration: none;
+  color: #444;
+}
+.icons .icon_trash:hover {
+  color: #f00;
 }
 
 .empty {
@@ -109,7 +138,7 @@ body {
   padding-left: 2vw;
   padding-right: 2vw;
 }
-.navbar .icons {
+.navbar .nav-icons {
   color: #bd93f9;
 }
 
