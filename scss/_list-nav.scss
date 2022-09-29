@@ -1,0 +1,83 @@
+@use "_colors.scss" as col;
+
+$card-bradius: 5px;
+
+
+
+
+
+
+
+.list-nav{
+    border-radius: $card-bradius;
+    background-color: col.$gray;
+    padding:2vw;
+    display: flex;
+    flex-wrap: nowrap;
+    margin-bottom: 2em;
+
+    h3{
+        margin:0;
+    }
+    p{
+        margin: 0;
+    }
+    a{
+        text-decoration: none;
+        color:unset;
+    }
+    *{
+        // border: 1px dashed #0f0;
+    }
+}
+
+
+
+
+
+.trash{
+    border: 2px solid col.$drac-red;
+    border-radius: $card-bradius;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding: 0.25em;
+    
+    transition: background-color 0.2s;
+
+    
+    
+    &:hover>.hide{
+        max-width: 1000px;
+        color: col.$drac-red;
+    }
+    &:hover{
+        background-color: col.$background;
+    }
+
+    .hide{
+        // width:0;
+        max-width: 0px;
+        overflow: hidden;
+        white-space: nowrap;
+
+
+        transition: width 0.3s, max-width 0.3s, color 0.4s 0.15s;
+        
+        display: flex;
+        flex-wrap: nowrap;
+        
+
+        a{
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+            margin-right: 1em;
+            margin-left: 0.5em;
+        }
+        a:hover{
+            color: col.$drac-pink;
+        }
+    }
+
+}

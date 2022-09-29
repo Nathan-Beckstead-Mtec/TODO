@@ -11,6 +11,54 @@ render_lists();
 
 
 
+/*
+
+[{
+        name: "TODO: todo list app",
+        items: [
+            {
+                text: "rename items",
+                checked: false
+            },
+            {
+                text: "prerequisites? (ie require a previous item to be compleated before this one appears)",
+                checked: false
+            },
+            {
+                text: "change color of checked off items",
+                checked: true
+            }
+        ]
+    },
+    {
+        name: "test",
+        items: []
+    },
+    {
+        name: "empty list",
+        items: [
+            {
+                text: "a",
+                checked: false
+            },
+            {
+                text: "c",
+                checked: true
+            },
+            {
+                text: "d",
+                checked: true
+            },
+            {
+                text: "e",
+                checked: false
+            }
+        ]
+    }
+]
+*/
+
+
 
 
 

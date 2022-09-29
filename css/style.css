@@ -1,3 +1,56 @@
+.list-nav {
+  border-radius: 5px;
+  background-color: #44475a;
+  padding: 2vw;
+  display: flex;
+  flex-wrap: nowrap;
+  margin-bottom: 2em;
+}
+.list-nav h3 {
+  margin: 0;
+}
+.list-nav p {
+  margin: 0;
+}
+.list-nav a {
+  text-decoration: none;
+  color: unset;
+}
+.trash {
+  border: 2px solid #ff5555;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  padding: 0.25em;
+  transition: background-color 0.2s;
+}
+.trash:hover > .hide {
+  max-width: 1000px;
+  color: #ff5555;
+}
+.trash:hover {
+  background-color: #1d1e26;
+}
+.trash .hide {
+  max-width: 0px;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: width 0.3s, max-width 0.3s, color 0.4s 0.15s;
+  display: flex;
+  flex-wrap: nowrap;
+}
+.trash .hide a {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin-right: 1em;
+  margin-left: 0.5em;
+}
+.trash .hide a:hover {
+  color: #ff79c6;
+}
+
 .list {
   display: flex;
   border-radius: 5px 5px 0 0;
