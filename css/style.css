@@ -23,19 +23,34 @@
   flex-wrap: nowrap;
   align-items: center;
   padding: 0.25em;
-  transition: background-color 0.2s;
+  background-color: #44475a;
+  box-sizing: border-box;
+  transition: background-color 0.2s, border-radius 0.05s;
+  position: relative;
 }
 .trash:hover > .hide {
   max-width: 1000px;
   color: #ff5555;
+  visibility: visible;
 }
 .trash:hover {
   background-color: #1d1e26;
+  border-radius: 5px 5px 0 0;
 }
 .trash .hide {
   max-width: 0px;
   overflow: hidden;
+  visibility: hidden;
   white-space: nowrap;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: -2px;
+  border: 2px solid #ff5555;
+  border-radius: 0 5px 5px 5px;
+  padding: 0.25em;
+  background-color: inherit;
+  box-sizing: border-box;
   transition: width 0.3s, max-width 0.3s, color 0.4s 0.15s;
   display: flex;
   flex-wrap: nowrap;
@@ -249,6 +264,7 @@ body {
   background-color: transparent;
   box-sizing: border-box;
   overflow-y: scroll;
+  overflow-x: clip;
   max-height: calc(100vh - 44px - 3em - 4px);
   transition: max-height 1s;
   transition-timing-function: cubic-bezier(0.17, 0.84, 0.44, 1);
