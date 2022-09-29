@@ -11,7 +11,10 @@ $card-bradius: 5px;
 .list-nav{
     border-radius: $card-bradius;
     background-color: col.$gray;
-    padding:2vw;
+    padding-left:2vw;
+    padding-right:2vw;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
     display: flex;
     flex-wrap: nowrap;
     // justify-content: space-between;
@@ -32,12 +35,11 @@ $card-bradius: 5px;
     }
 }
 
+@mixin button-base($color,$hover){
+    margin-left: 0.5em;
+    margin-right: 0.5em;
 
-
-
-
-.trash{
-    border: 2px solid col.$drac-red;
+    border: 2px solid $color;
     border-radius: $card-bradius;
     display: flex;
     flex-wrap: nowrap;
@@ -50,10 +52,11 @@ $card-bradius: 5px;
 
     
     position: relative;
-    &:hover>.hide{
-        max-width: 1000px;
-        color: col.$drac-red;
+    &:hover .hide{
+        max-width: 100vw;
+        color: $color;
         visibility: visible;
+        background-color: col.$background;
     }
     &:hover{
         background-color: col.$background;
@@ -71,13 +74,13 @@ $card-bradius: 5px;
         top: 100%;
         left:-2px;
 
-        border: 2px solid col.$drac-red;
+        border: 2px solid $color;
         border-radius: 0 $card-bradius $card-bradius $card-bradius;
         padding: 0.25em;
-        background-color: inherit;
+        background-color: col.$gray;
         box-sizing: border-box;
         
-        transition: width 0.3s, max-width 0.3s, color 0.4s 0.15s;
+        transition: width 0.3s, max-width 0.6s, color 0.4s 0.1s;
         
         display: flex;
         flex-wrap: nowrap;
@@ -93,6 +96,36 @@ $card-bradius: 5px;
         a:hover{
             color: col.$drac-pink;
         }
+    }
+}
+
+
+.trash{
+    @include button-base(col.$drac-red, col.$drac-pink);
+}
+.sort{
+    @include button-base(col.$drac-navy, col.$drac-white);
+}
+
+#list-name{
+    // width:auto;
+    height: 100%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 2em;
+    font-weight: bold;
+    color: col.$drac-purple;
+    position: relative;
+    padding-left: 4px;
+
+
+    &:hover{
+        box-shadow: 0 0 10px 2px col.$drac-black;
+    }
+    &:focus{
+        box-shadow: 0 0 10px 6px col.$drac-black, inset 0 0 1px 1px col.$drac-purple;
+        border:none;
     }
 
 }
