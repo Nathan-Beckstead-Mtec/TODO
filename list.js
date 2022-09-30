@@ -5,7 +5,7 @@ var lists;
 var index_list_selected;
 load();
 render_lists();
-
+load_event_listener();
 
 
 
@@ -114,9 +114,7 @@ function render_items(){
 	// listHtml += `<div class="edit"><input placeholder="+ add new item" id="add_item"></input></div>`
 
 
-	unload_event_listener();
 	document.querySelector("#list").innerHTML = listHtml;
-	load_event_listener();
 
 }
 
@@ -186,10 +184,12 @@ function textbox_update(event){
 		save();
     }
 }
-function unload_event_listener(){
+
+
+function unload_event_listener(){ //unused
 	document.querySelector("#add_item").removeEventListener("keypress", textbox_update);
 }
-function load_event_listener(){
+function load_event_listener(){ //used once (move to start of prog?)
 	document.querySelector("#add_item").addEventListener("keypress", textbox_update);
 }
 
