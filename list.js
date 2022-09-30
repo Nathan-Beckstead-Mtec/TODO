@@ -10,7 +10,6 @@ render_lists();
 
 
 
-
 /*
 
 [{
@@ -256,12 +255,12 @@ function load(){
 function card_button_sublist(id){
 
 }
-function card_button_trash(id){
+function card_button_trash(index){
 	moveToTrash({
 		from:lists[index_list_selected].name,
-		item:lists[index_list_selected].items[id]});
+		item:lists[index_list_selected].items[index]});
 
-	lists[index_list_selected].items.splice(id,1);
+	lists[index_list_selected].items.splice(index,1);
 	save();
 	render_items();
 }
@@ -270,4 +269,65 @@ function card_button_trash(id){
 function moveToTrash(input){
 	console.log("deleated:");
 	console.log(input)
+}
+
+
+function sort_clicked(){
+	console.log("sort");
+	lists[index_list_selected].items.sort((a,b) =>{
+		console.log(JSON.stringify(a) + ", " + JSON.stringify(b));
+		if (a.checked == b.checked){
+			return 0;
+		}
+		if(a.checked){
+			return 1;
+		}
+		//a != b and a == false \implies b == true
+		return -1;
+	})
+	save();
+	render_items();
+}
+
+
+function delete_selected(){
+	console.log("delete selected");
+	check_checker();
+	lists[index_list_selected].items = lists[index_list_selected].items.filter((item, index) =>{
+		if(!item.checked){
+			return true; //keep element
+		}
+		moveToTrash({
+			from:lists[index_list_selected].name,
+			item:item
+		});
+		return false; //toss the element
+	});
+	save();
+	render_items();
+}
+function delete_list(){
+	console.log("delete all");
+	//confirm
+	if(!confirm("Delete list: " + lists[index_list_selected].name + "?")){
+		return;
+	}
+	//send  to trash as sublist
+	// moveToTrash()
+
+	//delete list
+	lists.splice(index_list_selected,1);
+
+	//ui
+	// animation?
+
+	//send to different list
+	
+	index_list_selected--; //underflow?
+	//do something if index == 0 (before dec) then 
+		// either go to next list
+		// or generate the null list.
+	render_lists();
+	save(); 
+
 }
