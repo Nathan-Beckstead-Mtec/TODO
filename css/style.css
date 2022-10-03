@@ -143,6 +143,12 @@
   box-shadow: 0 0 10px 6px #282a36, inset 0 0 1px 1px #bd93f9;
   border: none;
 }
+#list-name::placeholder {
+  opacity: 1;
+}
+#list-name:focus::placeholder, #list-name:hover::placeholder {
+  opacity: 0.75;
+}
 
 .list {
   display: flex;
@@ -161,6 +167,7 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-start;
+  transition: height 0.2s;
 }
 .list .card label {
   cursor: pointer;
@@ -169,14 +176,14 @@
 .list .card:hover .icons {
   opacity: 1;
 }
-.list .card input {
+.list .card input[type=checkbox] {
   margin-right: 1em;
   margin-left: 1em;
   height: 1.5em;
   width: 1.5em;
   transition: color 2s, text-shadow 2s, text-decoration-color 2s;
 }
-.list .card input:checked + label {
+.list .card input[type=checkbox]:checked + label {
   color: #44475a;
   text-shadow: 0 0 1px #000;
   text-decoration: line-through;
@@ -262,6 +269,27 @@
 
 .icon-plus::before {
   content: "+";
+}
+
+.rename_item {
+  outline: none;
+  width: 100%;
+  border: none;
+  padding-right: 0;
+  padding-left: 4px;
+  margin-left: -4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  background-color: transparent;
+  box-shadow: 0 0 4px 4px #282a36;
+  font-size: 1rem;
+  font-family: unset;
+}
+
+.rename_item:focus {
+  box-shadow: 0 0 4px 4px #282a36, inset 0 0 1px 1px #f8f8f2;
 }
 
 body {

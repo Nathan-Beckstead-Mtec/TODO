@@ -120,6 +120,7 @@ $card-bradius: 5px;
     padding-left: 4px;
 
 
+    
     &:hover{
         box-shadow: 0 0 10px 2px col.$drac-black;
     }
@@ -127,5 +128,13 @@ $card-bradius: 5px;
         box-shadow: 0 0 10px 6px col.$drac-black, inset 0 0 1px 1px col.$drac-purple;
         border:none;
     }
+    &::placeholder{
+        opacity: 1;
+    }
+    &:focus::placeholder, &:hover::placeholder{
+        opacity: 0.75;
+    }
 
 }
+
+

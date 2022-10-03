@@ -66,6 +66,7 @@ function generate_item_Html(item, index) {
 	//should not be used directly because of the link between item and idex
 	const trash = `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="4" y1="7" x2="20" y2="7"></line><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path></svg>`;
 	const sublist = `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-subtask" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="6" y1="9" x2="12" y2="9"></line><line x1="4" y1="5" x2="8" y2="5"></line><path d="M6 5v11a1 1 0 0 0 1 1h5"></path><rect x="12" y="7" width="8" height="4" rx="1"></rect><rect x="12" y="15" width="8" height="4" rx="1"></rect></svg>`;
+	const rename = `<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cursor-text" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 12h4"></path><path d="M9 4a3 3 0 0 1 3 3v10a3 3 0 0 1 -3 3"></path><path d="M15 4a3 3 0 0 0 -3 3v10a3 3 0 0 0 3 3"></path></svg>`
 
 	return `
 	<div class="card${item.checked ? ' checked' : ''}" >
@@ -74,7 +75,10 @@ function generate_item_Html(item, index) {
 		<p>${item.text}</p>
 	</label>
 	<div class="icons">
-		<a href="#" class="icon_sublist" onclick="card_button_sublist(${index})">
+		<a href="#" class="icon_white" onclick="card_button_rename(${index})">
+			${rename}
+		</a>
+		<a href="#" class="icon_white" onclick="card_button_sublist(${index})">
 			${sublist}
 		</a>
 		<a href="#" class="icon_trash" onclick="card_button_trash(${index})">
@@ -171,19 +175,22 @@ function sanitize(input) {
 
 function textbox_update(event) {
 	if (event.key === "Enter") {
-		event.preventDefault(); //dont let the enter key scroll the page
+
 		let input = document.querySelector("#add_item"); //text input
-
-
-		let item_to_push = { text: input.value, checked: false };
-		let index = lists[index_list_selected].items.length; //off by one accounted for below
-		lists[index_list_selected].items.push(item_to_push); //add the thing
-
-		input.value = ""; //clears the textbox again
-
-
-		render_items();
-		save();
+		if (input.value != ""){
+			event.preventDefault(); //dont let the enter key scroll the page
+	
+	
+			let item_to_push = { text: input.value, checked: false };
+			let index = lists[index_list_selected].items.length; //off by one accounted for below
+			lists[index_list_selected].items.push(item_to_push); //add the thing
+	
+			input.value = ""; //clears the textbox again
+	
+	
+			render_items();
+			save();
+		}
 	}
 }
 
@@ -253,6 +260,33 @@ function load() {
 	}
 }
 
+
+
+function card_button_rename(id){
+	console.log("click");
+	let placeholder = lists[index_list_selected].items[id].text;
+	let html = `<input class="rename_item" onblur="item_rename_close(this,${id})" onchange="item_rename_save(this, ${id})" value="${placeholder}">`;
+	label = document.querySelector("label[for='li_" + id + "']");
+	console.log(label);
+	label.innerHTML = html;
+	console.log(label.innerHTML);
+	input = label.children[0]
+	// input.focus();
+	input.select();
+	// input.setSelectionRange(0,input.value);
+}
+function item_rename_save(thus, id){
+	console.log(thus);
+	lists[index_list_selected].items[id].text = thus.value;
+	item_rename_close(thus, id);
+	save();
+}
+function item_rename_close(thus, id){
+	html = `<p>`;
+	html += lists[index_list_selected].items[id].text;
+	html += `</p>`;
+	thus.parentElement.innerHTML = html;
+}
 
 function card_button_sublist(id) {
 

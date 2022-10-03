@@ -24,6 +24,8 @@ $card-bradius: 5px;
         align-items: center;
         justify-content: flex-start;
         
+        transition: height 0.2s;
+
         label{
             cursor: pointer;
             flex-grow: 1;
@@ -32,14 +34,14 @@ $card-bradius: 5px;
             opacity: 1;
         }
 
-        input{
+        input[type=checkbox]{
             margin-right: 1em;
             margin-left: 1em;
             height:1.5em;
             width: 1.5em;
             transition: color 2s, text-shadow 2s, text-decoration-color 2s;
         }
-        input:checked+label{
+        input[type=checkbox]:checked+label{
             color: col.$gray;
             text-shadow: 0 0 1px #000;
             text-decoration: line-through;
@@ -144,4 +146,30 @@ $card-bradius: 5px;
 }
 
 
+.rename_item{
+    outline: none;
+    width:100%;
+    border: none;
+    padding-right: 0;
 
+    //some offsets for box shadow
+    padding-left: 4px;
+    margin-left: -4px;
+
+    //16px to match the <p> tag
+    padding-top: 4px;
+    padding-bottom:4px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+
+    background-color: transparent;
+    box-shadow: 0 0 4px 4px col.$black;
+
+    font-size: 1rem;
+    font-family: unset;
+
+}
+
+.rename_item:focus{
+    box-shadow: 0 0 4px 4px col.$black, inset 0 0 1px 1px col.$drac-white;
+}
