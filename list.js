@@ -314,7 +314,7 @@ function moveToTrash(input) {
 
 //list-nav
 
-function sort_clicked() {
+function nav_sort() {
 	console.log("sort");
 	lists[index_list_selected].items.sort((a, b) => {
 		console.log(JSON.stringify(a) + ", " + JSON.stringify(b));
@@ -332,7 +332,7 @@ function sort_clicked() {
 }
 
 
-function delete_selected() {
+function nav_delete_selected() {
 	console.log("delete selected");
 	check_checker();
 	lists[index_list_selected].items = lists[index_list_selected].items.filter((item, index) => {
@@ -348,7 +348,7 @@ function delete_selected() {
 	save();
 	render_items();
 }
-function delete_list() {
+function nav_delete_list() {
 	console.log("delete all");
 	//confirm
 	if (!confirm("Delete list: " + lists[index_list_selected].name + "?")) {
@@ -384,3 +384,27 @@ function nav_list_rename(thus){
 
 }
 
+function nav_list_download(){
+	
+	let text = lists[index_list_selected];
+	let name = text.name;
+	text = JSON.stringify(text, null, 4);
+
+	let element = document.createElement("a");
+	let file = new Blob([text], {
+		type: "text/plain",
+	});
+	element.href = URL.createObjectURL(file);
+
+	const illegalCharRegex = new RegExp("[!@#$%^&*(){}\\[\\]<>?/\\|'\";:` ]","g");
+	name = "list-" + name + "-" + ((new Date).toISOString()) + ".json"
+	name = name.replaceAll(illegalCharRegex, "-");
+	console.log(name);
+	element.download = name;
+	document.body.appendChild(element);
+	element.click();
+
+	
+
+	
+}

@@ -58,17 +58,25 @@
 						<!-- <button onclick="render_lists()">render lists</button> -->
 					</div>
 					<div class="sort">
-						<a href="#" onclick="sort_clicked()">
+						<a href="#" onclick="nav_sort()">
 							<svg xmlns="http://www.w3.org/2000/svg" class="icon-tabler-sort-descending" width="36" height="36" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="4" y1="6" x2="13" y2="6"></line><line x1="4" y1="12" x2="11" y2="12"></line><line x1="4" y1="18" x2="11" y2="18"></line><polyline points="15 15 18 18 21 15"></polyline><line x1="18" y1="6" x2="18" y2="18"></line></svg>
 							<div class="hide">
 								<p>Sort Checked to bottom</p>
 							</div>
 						</a>
 					</div>
+					<div class="sort">
+						<a href="#" onclick="nav_list_download()">
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon-tabler-file-download" width="36" height="36" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M14 3v4a1 1 0 0 0 1 1h4"></path><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path><path d="M12 17v-6"></path><path d="M9.5 14.5l2.5 2.5l2.5 -2.5"></path></svg>
+							<div class="hide">
+								<p>Download List</p>
+							</div>
+						</a>
+					</div>
 					<div class="trash">
 						<svg xmlns="http://www.w3.org/2000/svg" class="icon-tabler-trash" width="36" height="36" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="4" y1="7" x2="20" y2="7"></line><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path></svg>
 						<span class="hide">
-							<a href="#" onclick="delete_selected()">
+							<a href="#" onclick="nav_delete_selected()">
 								<svg xmlns="http://www.w3.org/2000/svg" class="icon-tabler-checkbox" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><polyline points="9 11 12 14 20 6"></polyline><path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9"></path></svg>    
 								<p>All Checked Items</p>
 							</a>
