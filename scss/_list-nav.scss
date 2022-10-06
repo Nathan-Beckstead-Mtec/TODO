@@ -102,6 +102,10 @@ $card-bradius: 5px;
 
 .trash{
     @include button-base(col.$drac-red, col.$drac-pink);
+    .hide{
+        padding-top: .5em;
+        padding-bottom: .5em;
+    }
 }
 .sort{
     @include button-base(col.$drac-navy, col.$drac-white);

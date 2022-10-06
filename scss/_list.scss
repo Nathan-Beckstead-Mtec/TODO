@@ -24,7 +24,12 @@ $card-bradius: 5px;
         align-items: center;
         justify-content: flex-start;
         
-        transition: height 0.2s;
+        transition: height 0.2s, box-shadow 0.2s;
+
+        &:hover{
+            box-shadow: -10px 0 10px 4px col.$black, 10px 0px 10px 4px col.$black;
+        }
+
 
         label{
             cursor: pointer;

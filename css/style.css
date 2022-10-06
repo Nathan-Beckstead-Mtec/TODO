@@ -71,6 +71,10 @@
 .trash .hide a:hover {
   color: #ff79c6;
 }
+.trash .hide {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
 
 .sort {
   margin-left: 0.5em;
@@ -167,7 +171,10 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-start;
-  transition: height 0.2s;
+  transition: height 0.2s, box-shadow 0.2s;
+}
+.list .card:hover {
+  box-shadow: -10px 0 10px 4px #282a36, 10px 0px 10px 4px #282a36;
 }
 .list .card label {
   cursor: pointer;
