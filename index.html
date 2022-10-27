@@ -92,62 +92,11 @@
 						<input type="checkbox" id="0" oninput="check_checker()">
 						<p>hardcoded todo item to set scss</p>
 					</label> -->
-
-					<!-- <div class="empty">
-						<p>&lt;----- create a new list to start</p>
-					</div> -->
 					
-
-					<div class="card">
-						<input type="checkbox" id="li_${index}" ${item.checked ? 'checked="checked"' : ''} oninput="check_checker()">
-						<label for="li_${index}">
-							<p>${item.text}</p>
-							<input class="rename_item">
-						</label>
-						<div class="icons">
-							<a href="#" class="icon_sublist" oninput="card_button_sublist(${index})">
-								<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cursor-text" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 12h4"></path><path d="M9 4a3 3 0 0 1 3 3v10a3 3 0 0 1 -3 3"></path><path d="M15 4a3 3 0 0 0 -3 3v10a3 3 0 0 0 3 3"></path></svg>
-							</a>
-							<label for="thing" class="icon_sublist">
-								<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cursor-text" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 12h4"></path><path d="M9 4a3 3 0 0 1 3 3v10a3 3 0 0 1 -3 3"></path><path d="M15 4a3 3 0 0 0 -3 3v10a3 3 0 0 0 3 3"></path></svg>
-							</label>
-							<a href="#" class="icon_sublist" oninput="card_button_sublist(${index})">
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="6" y1="9" x2="12" y2="9"></line><line x1="4" y1="5" x2="8" y2="5"></line><path d="M6 5v11a1 1 0 0 0 1 1h5"></path><rect x="12" y="7" width="8" height="4" rx="1"></rect><rect x="12" y="15" width="8" height="4" rx="1"></rect></svg>
-							</a>
-							<a href="#" class="icon_trash" oninput="card_button_trash(${index})">
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="4" y1="7" x2="20" y2="7"></line><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path></svg>
-							</a>
-						</div>
+					<div class="empty">
+						<p>&lt;----- create a new list to start</p>
 					</div>
-
-
-					<div class="card">
-						<input type="checkbox" id="li_0" oninput="check_checker()">
-						<label for="li_0">
-							<p>add trash icon</p>
-						</label>
-						<div class="icons">
-							<a href="#" class="icon_sublist" oninput="card_button_sublist(${index})">
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="6" y1="9" x2="12" y2="9"></line><line x1="4" y1="5" x2="8" y2="5"></line><path d="M6 5v11a1 1 0 0 0 1 1h5"></path><rect x="12" y="7" width="8" height="4" rx="1"></rect><rect x="12" y="15" width="8" height="4" rx="1"></rect></svg>
-							</a>
-							<a href="#" class="icon_trash" oninput="card_button_trash(${index})">
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="4" y1="7" x2="20" y2="7"></line><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path></svg>
-							</a>
-						</div>
-					</div>
-
-
-					<label class="card" for="li_1">
-						<input type="checkbox" id="li_1" oninput="check_checker()">
-						<p>add trashed list</p>
-					</label>
-
-
-					<label class="card" for="li_2">
-						<input type="checkbox" id="li_2" oninput="check_checker()">
-						<p>reorder items</p>
-					</label><label class="card" for="li_3"><input type="checkbox" id="li_3" oninput="check_checker()"><p>drag and drop to new list</p></label><label class="card" for="li_4"><input type="checkbox" id="li_4" oninput="check_checker()"><p>indented lists (lists in lists) (click top to checkoff all children (recursivly)) (might need a refactor)</p></label><label class="card" for="li_5"><input type="checkbox" id="li_5" oninput="check_checker()"><p>add backup somehow?</p></label><label class="card" for="li_6"><input type="checkbox" id="li_6" oninput="check_checker()"><p>fix colors?</p></label><label class="card" for="li_7"><input type="checkbox" id="li_7" oninput="check_checker()"><p>rename items</p></label><label class="card" for="li_8"><input type="checkbox" id="li_8" oninput="check_checker()"><p>prerequisites? (ie require a previous item to be compleated before this one appears)</p></label><label class="card" for="li_9"><input type="checkbox" id="li_9" oninput="check_checker()"><p>new item</p></label><label class="card" for="li_10"><input type="checkbox" id="li_10" oninput="check_checker()"><p>change color of checked off items</p></label>
-
+					
 
 				</div>
 				<div class="edit" >

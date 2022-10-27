@@ -109,16 +109,20 @@ function render_items() {
 	if (lists.length === 0) {
 		listHtml = `<div class="empty"><p>&lt;----- create a new list to start</p></div>`;
 		document.querySelector("#add_item").disabled = true;
+		document.querySelector(".list-nav").style.display = "none";
+		
 	} else {
 		lists[index_list_selected].items.forEach((item, index) => {
 			listHtml += generate_item_Html(item, index);
 		})
 		document.querySelector("#add_item").disabled = false;
+		document.querySelector(".list-nav").style.display = "unset";
+		
+		let list_name = document.querySelector("#list-name");
+		list_name.setAttribute("placeholder", lists[index_list_selected].name + ":");
+		list_name.value = "";
 	}
 	// listHtml += `<div class="edit"><input placeholder="+ add new item" id="add_item"></input></div>`
-	let list_name = document.querySelector("#list-name");
-	list_name.setAttribute("placeholder", lists[index_list_selected].name + ":");
-	list_name.value = "";
 
 	document.querySelector("#list").innerHTML = listHtml;
 
@@ -347,6 +351,12 @@ function nav_delete_selected() {
 	});
 	save();
 	render_items();
+
+
+	for (let i = 0; i < array.length; i++) {
+		const element = array[i];
+		
+	}
 }
 function nav_delete_list() {
 	console.log("delete all");
