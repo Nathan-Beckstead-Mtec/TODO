@@ -116,7 +116,7 @@ function render_items() {
 			listHtml += generate_item_Html(item, index);
 		})
 		document.querySelector("#add_item").disabled = false;
-		document.querySelector(".list-nav").style.display = "unset";
+		document.querySelector(".list-nav").style.display = "flex";
 		
 		let list_name = document.querySelector("#list-name");
 		list_name.setAttribute("placeholder", lists[index_list_selected].name + ":");
